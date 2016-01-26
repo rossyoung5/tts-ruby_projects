@@ -1,1 +1,5 @@
-inventory_test.rb
+require_relative "myinventory"
+
+test = Inventory.new
+
+test.start
