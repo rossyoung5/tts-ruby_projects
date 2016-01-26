@@ -36,7 +36,7 @@ private
     puts "*" * 40
 
     @inv.each do |item, value|
-    puts "#{item}: #{value}:"
+    puts "#{item}: #{value}"
     end
 
     puts "*" * 40 + "\n\n"
@@ -58,21 +58,49 @@ private
     puts "What's the new value of #{item}?"
     print "New value: "
     @inv[item] = gets.to_i
-    puts "Thanks! Your edit has been saved."
+
+    puts "Thanks! Your edit has been saved.\n\n"
   end
 
-  def change_item
-    puts "Which item do you need to change?"
-    item = get_item
-  end
+  # def change_item
+  #   puts "Which item do you need to change?"
+  #   item = get_item
+  # end
 
   def add_item
+    puts "Okay what would you like to add to the inventory?"
+    print "New animal (plural): "
+    new_item = gets.chomp.to_sym
+    puts "\n\n"
+
+    puts "And how many of those #{new_item} would you like to add?"
+    print "Number of new #{new_item}: "
+    @inv[new_item] = gets.to_i
+    puts"\n\n"
+  end
+
+  def remove_item
+    puts "Which item would you like to remove?"
+    item = get_item
+    puts "\n\n"
+
+    puts "Are you sure you want to remove #{item}?"
+    print "yes/no > "
+    delete = gets.chomp
+    if delete == "yes"
+      @inv.delete(item)
+      puts "Okay, it's gone!\n\n"
+    else
+      puts "Okay we'll leave the inventory alone for now.\n\n"
+    end
+
+  end
 
   def user_input
     puts "What would you like to do?"
     puts "1: view the whole inventory" #got it
     puts "2: edit inventory items" #got it
-    puts "3: add a new item"
+    puts "3: add a new item"#got it
     puts "4: remove an item"
     puts "5: change item name"
     puts "6: leave Zooventory\n\n"
