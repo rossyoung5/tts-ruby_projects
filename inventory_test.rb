@@ -1,5 +1,5 @@
 require_relative "myinventory"
 
-test = Inventory.new
+zooventory = Inventory.new
 
-test.start
+zooventory.start
